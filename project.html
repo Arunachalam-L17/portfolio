@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arunachalam L - Projects</title>
+
+  <link rel="shortcut icon" href="./media/titleimage.jpeg" type="image/x-icon">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    :root{
+      --primary:#44daff;
+      --primary-dark:#0099cc;
+      --bg-dark:#121212;
+      --card-bg:linear-gradient(145deg,#252525,#1b1b1b);
+      --text-light:#f9f9f9;
+      --text-gray:#b0b0b0;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--bg-dark);
+      color:var(--text-light);
+      overflow-x:hidden;
+      background: radial-gradient(circle at top left,#1a1a1a 0%,#121212 80%);
+    }
+
+    /* Background */
+
+    #particles-js{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      z-index:-1;
+      opacity:0.3;
+    }
+
+    /* Navbar */
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:calc(100% - 40px);
+      margin:20px auto;
+      padding:15px 25px;
+      border-radius:30px;
+      background:rgba(25,25,25,0.85);
+      backdrop-filter:blur(10px);
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 4px 25px rgba(0,0,0,0.4);
+    }
+
+    .name{
+      font-size:1.5rem;
+      font-weight:700;
+      background:linear-gradient(to right,var(--primary),#00ffcc);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .nav-right{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--text-gray);
+      padding:10px 16px;
+      border-radius:20px;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:var(--primary);
+      background:rgba(68,218,255,0.1);
+      transform:translateY(-2px);
+    }
+
+    /* Container */
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+      padding:40px 0;
+    }
+
+    .container h1{
+      text-align:center;
+      font-size:3rem;
+      margin-bottom:50px;
+      background:linear-gradient(to right,#fff,var(--primary));
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    /* Projects Grid */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+      gap:35px;
+    }
+
+    .project-card{
+      background:var(--card-bg);
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid rgba(68,218,255,0.1);
+      transition:0.4s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+      border-color:rgba(68,218,255,0.5);
+      box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .project-preview{
+      height:250px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:5rem;
+      color:white;
+    }
+
+    .preview-1{
+      background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    }
+
+    .preview-2{
+      background:linear-gradient(135deg,#141e30,#243b55);
+    }
+
+    .preview-3{
+      background:linear-gradient(135deg,#232526,#414345);
+    }
+
+    .project-details{
+      padding:25px;
+    }
+
+    .project-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:15px;
+    }
+
+    .project-title{
+      font-size:1.4rem;
+      color:var(--primary);
+      font-weight:600;
+    }
+
+    .project-status{
+      background:#4CAF50;
+      color:white;
+      padding:5px 12px;
+      border-radius:20px;
+      font-size:0.75rem;
+      font-weight:600;
+    }
+
+    .project-description{
+      color:var(--text-gray);
+      line-height:1.7;
+      margin:15px 0;
+    }
+
+    .project-tech{
+      color:#d0d0d0;
+      font-style:italic;
+      margin-bottom:20px;
+    }
+
+    .project-links{
+      display:flex;
+      gap:15px;
+    }
+
+    .project-link{
+      text-decoration:none;
+      color:var(--primary);
+      padding:10px 18px;
+      border-radius:25px;
+      background:rgba(68,218,255,0.1);
+      transition:0.3s;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .project-link:hover{
+      background:rgba(68,218,255,0.25);
+      color:white;
+      transform:translateY(-3px);
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      margin-top:60px;
+      background:rgba(20,20,20,0.8);
+      color:var(--text-gray);
+    }
+
+    /* Responsive */
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .container h1{
+        font-size:2.2rem;
+      }
+
+      .project-title{
+        font-size:1.2rem;
+      }
+
+      .project-preview{
+        height:220px;
+        font-size:4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div id="particles-js"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="name">ARUNACHALAM L</div>
+
+    <div class="nav-right">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="skill.html"><i class="fas fa-code"></i> Skills</a>
+      <a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a>
+      <a href="project.html"><i class="fas fa-diagram-project"></i> Projects</a>
+      <a href="certificate.html"><i class="fas fa-certificate"></i> Certifications</a>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="container">
+
+    <h1>My Projects</h1>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+
+        <div class="project-preview preview-1">
+          <i class="fas fa-car-crash"></i>
+        </div>
+
+        <div class="project-details">
+
+          <div class="project-header">
+            <h2 class="project-title">
+              Driver Fatigue Detection System
+            </h2>
+
+            <span class="project-status">
+              Completed
+            </span>
+          </div>
+
+          <p class="project-description">
+            Developed a real-time fatigue detection system using Python,
+            MediaPipe, and OpenCV. Implemented eye closure detection,
+            yawning detection, and head pose estimation to monitor driver
+            alertness and generate real-time safety alerts.
+          </p>
+
+          <p class="project-tech">
+            Technologies: Python, OpenCV, MediaPipe, Computer Vision
+          </p>
+
+          <div class="project-links">
+
+            <a href="https://github.com/Arunachalam-L17/Driver-fatigue"
+              target="_blank"
+              class="project-link">
+
+              <i class="fab fa-github"></i>
+              View Code
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+
+        <div class="project-preview preview-2">
+          <i class="fas fa-users"></i>
+        </div>
+
+        <div class="project-details">
+
+          <div class="project-header">
+            <h2 class="project-title">
+              Study Group Finder & Collaboration Platform
+            </h2>
+
+            <span class="project-status">
+              Completed
+            </span>
+          </div>
+
+          <p class="project-description">
+            Worked on frontend development of Study Group Finder using
+            React.js. Built responsive UI components for collaboration
+            features and integrated REST APIs for dynamic data handling
+            and smooth user interaction.
+          </p>
+
+          <p class="project-tech">
+            Technologies: React.js, REST APIs, HTML, CSS, JavaScript
+          </p>
+
+          <div class="project-links">
+
+            <a href="https://github.com/Arunachalam-L17/Study-Group-Finder-Collaboration-Platform-Group-B"
+              target="_blank"
+              class="project-link">
+
+              <i class="fab fa-github"></i>
+              View Code
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+
+        <div class="project-preview preview-3">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+
+        <div class="project-details">
+
+          <div class="project-header">
+            <h2 class="project-title">
+              Personal Portfolio Website
+            </h2>
+
+            <span class="project-status">
+              Completed
+            </span>
+          </div>
+
+          <p class="project-description">
+            Designed and developed a responsive personal portfolio website
+            to showcase skills, projects, certifications, and educational
+            background with modern UI design, animations, and interactive
+            effects.
+          </p>
+
+          <p class="project-tech">
+            Technologies: HTML, CSS, JavaScript
+          </p>
+
+          <div class="project-links">
+
+            <a href="https://github.com/arun-m15/Arun-Portfolio"
+              target="_blank"
+              class="project-link">
+
+              <i class="fab fa-github"></i>
+              View Code
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Arunachalam L. All Rights Reserved.
+  </footer>
+
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <script>
+
+    particlesJS("particles-js", {
+
+      "particles": {
+        "number": {
+          "value": 80
+        },
+
+        "color": {
+          "value": "#44daff"
+        },
+
+        "shape": {
+          "type": "circle"
+        },
+
+        "opacity": {
+          "value": 0.5
+        },
+
+        "size": {
+          "value": 3,
+          "random": true
+        },
+
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#44daff",
+          "opacity": 0.2,
+          "width": 1
+        },
+
+        "move": {
+          "enable": true,
+          "speed": 2
+        }
+      },
+
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          }
+        }
+      },
+
+      "retina_detect": true
+    });
+
+  </script>
+
+</body>
+</html>
